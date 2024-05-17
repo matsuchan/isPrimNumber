@@ -12,11 +12,15 @@ public class isPrimeNumberClient {
             Scanner scanner = new Scanner(System.in);
             System.out.print("ポートを入力してください(5000など) → ");
             int port = scanner.nextInt();
+
+            while(true){
+
             System.out.println("localhostの" + port + "番ポートに接続を要求します");
 
             Socket socket = new Socket("localhost", port);
             System.out.println("接続されました");
             System.out.println("素数かどうかを判別します");
+
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
             System.out.println("判別したい値を入力してください ↓");
@@ -29,10 +33,10 @@ public class isPrimeNumberClient {
                 stop.setContent(content);
                 oos.writeObject(stop);
                 oos.flush();
+                scanner.close();
             }
 
             int number = Integer.parseInt(content);
-            scanner.close();
 
             isPrimeNumberCalculate Pnumber = new isPrimeNumberCalculate();
             Pnumber.setContent(content);
@@ -51,6 +55,7 @@ public class isPrimeNumberClient {
             ois.close();
             oos.close();
             socket.close();
+        }
 
         } // エラーが発生したらエラーメッセージを表示してプログラムを終了する
         catch (BindException be) {
