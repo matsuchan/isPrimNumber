@@ -45,7 +45,7 @@ public class isPrimeNumberServer {
             String presentFromClient = Pnumber.getContent();
             System.out.println("入力された値は" + presentFromClient);
             
-            if(presentFromClient.equals("exit")||presentFromClient.equals("exit")){
+            if(presentFromClient.equals("exit")||presentFromClient.equals("quit")){
                 System.out.println("中断コマンドが確認されました。プログラムを終了します");
                 break;
             }
